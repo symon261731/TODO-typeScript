@@ -1,0 +1,23 @@
+.oneCard {
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #3f72af;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+}
+
+
+.notWind {
+    color: white;
+    font-size: 25px;
+
+}
+
+.button {
+    font-size: 15px;
+}

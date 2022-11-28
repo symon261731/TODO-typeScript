@@ -16,10 +16,6 @@ export const App: React.FC = () => {
 
     console.log(tasks);
 
-    useEffect(() => {
-        createTask('abcderf')
-    }, [])
-
     return (
         <article className={styles.article}>
             <h1 className={styles.articleTitle}>To Do App</h1>
@@ -27,9 +23,13 @@ export const App: React.FC = () => {
                 <Form></Form>
             </section>
             <section className={styles.articleSection}>
-                {tasks.map(el => <OneTask key={el.id} info={el}></OneTask>)}
+                {tasks && (tasks?.map((el: any) => <OneTask key={el.id} id={el.id} title={el.title} createdAt={el.createdAt} />))}
+
+                {!tasks &&
+                    (<p className={styles.articleSorry} > sorry but not task yet</p>)
+                }
             </section>
 
-        </article>
+        </article >
     );
 }

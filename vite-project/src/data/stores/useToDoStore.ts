@@ -16,12 +16,8 @@ interface ToDoStore {
 
 export const useStore = create<ToDoStore>((set, get) => ({
 
-    tasks: [{
-        id: '123',
-        title: 'asdg',
-        createdAt: 121241
-    }],
-    createTask: (title) => {
+    tasks: [],
+    createTask: (title: string) => {
         const { tasks } = get();
         const newTask = {
             id: GenerateId(),
@@ -34,8 +30,21 @@ export const useStore = create<ToDoStore>((set, get) => ({
         })
 
     },
-    updateTask: (id, title) => { },
-    removeTask: (id) => { },
+
+    updateTask: (id: string, title: string) => {
+        const { tasks } = get();
+        set({
+            tasks: tasks.map(el => ({
+                ...el,
+                title: el.id === id ? title : el.title
+            }))
+        });
+    },
+
+    removeTask: (id: string) => {
+        const { tasks } = get();
+        tasks: tasks.filter(el => el.id !== id)
+    },
 }))
 
 
