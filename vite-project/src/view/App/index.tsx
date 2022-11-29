@@ -14,7 +14,6 @@ export const App: React.FC = () => {
             state.removeTask,
         ]);
 
-    console.log(tasks);
 
     return (
         <article className={styles.article}>

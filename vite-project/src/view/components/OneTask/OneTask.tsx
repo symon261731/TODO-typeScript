@@ -9,13 +9,18 @@ interface taskProp {
 }
 
 const OneTask: React.FC<taskProp> = (prop) => {
-    const updateTask = useStore(state => state.updateTask);
+    const [updateTask, removeTask] = useStore(state => [state.updateTask, state.removeTask]);
     const [isInput, setIsInput] = useState(false);
     const [newTitle, setNewTitle] = useState(prop.title);
+
     const updateValue = useCallback(() => {
-        updateTask(prop.id, newTitle)
+        updateTask(prop.id, newTitle);
         setIsInput(!isInput);
     }, [newTitle])
+
+    const deleteThisTask = useCallback(() => {
+        removeTask(prop.id);
+    }, [newTitle]);
 
     return (
         <div className={styles.container}>
@@ -46,7 +51,10 @@ const OneTask: React.FC<taskProp> = (prop) => {
                 <button
                     onClick={() => setIsInput(!isInput)}
                     className={styles.editButton}>Edit</button>
-                <button className={styles.button} type='button'>X</button>
+                <button
+                    onClick={() => deleteThisTask()}
+                    className={styles.button}
+                    type='button'>X</button>
             </div>
         </div>
     )
