@@ -16,7 +16,7 @@ const Form: React.FC = () => {
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                submitHandler();
+                if (input) submitHandler();
             }}
             className={styles.form}>
             <input

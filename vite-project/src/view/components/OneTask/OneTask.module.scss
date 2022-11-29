@@ -1,10 +1,13 @@
-.oneCard {
-    padding: 5px;
-    border-radius: 15px;
-    background-color: #3f72af;
+.container {
+    position: relative;
+    z-index: 1;
+
     display: flex;
-    align-items: center;
     justify-content: space-between;
+
+    background-color: #3f72af;
+    border-radius: 15px;
+    padding-left: 2em;
 
     &:not(:last-child) {
         margin-bottom: 15px;
@@ -12,12 +15,125 @@
 }
 
 
+.oneCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .notWind {
     color: white;
     font-size: 25px;
+    font-weight: 700;
+}
+
+.input {
+    font-family: 'Roboto';
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+    background-color: transparent;
+
+    max-width: 250px;
+    border: none;
+    padding-top: 1.13em;
+    padding-bottom: 1.13em;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+
+.confirm {
+    color: white;
+    background-color: transparent;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        color: #3ec36f;
+    }
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
 
 }
 
-.button {
+
+.editButton {
+    color: white;
     font-size: 15px;
+    font-weight: 900;
+    height: 100%;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    transition: all 500ms ease 0s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: white;
+        color: #3f72af;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.button {
+    height: 100%;
+    color: white;
+    font-size: 15px;
+    font-weight: 900;
+    text-align: center;
+    background-color: transparent;
+    padding-right: 2em;
+
+    position: relative;
+    z-index: 6;
+    border: none;
+    cursor: pointer;
+
+    transition: all 1.3s ease 0s;
+    overflow: hidden;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::before {
+        content: '';
+        font-size: 15px;
+        background-color: rgb(255, 248, 248);
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: -1;
+
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        transition: all 0.5s ease 0s;
+    }
+
+    &:hover {
+        color: #3f72af;
+
+        &::before {
+
+            left: 0%;
+        }
+    }
+
+
+
 }
