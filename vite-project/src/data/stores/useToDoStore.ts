@@ -4,6 +4,7 @@ interface Task {
     id: string;
     title: string;
     createdAt: number;
+    done: boolean;
 }
 
 interface ToDoStore {
@@ -11,6 +12,7 @@ interface ToDoStore {
     createTask: (title: string) => void;
     updateTask: (id: string, title: string) => void;
     removeTask: (id: string) => void;
+    doneTask: (id: string) => void;
 }
 
 
@@ -23,6 +25,7 @@ export const useStore = create<ToDoStore>((set, get) => ({
             id: GenerateId(),
             title,
             createdAt: Date.now(),
+            done: false,
         }
 
         set({
@@ -46,8 +49,18 @@ export const useStore = create<ToDoStore>((set, get) => ({
         set({
             tasks: tasks.filter(el => el.id !== id)
         })
-
     },
+
+    doneTask: (id: string) => {
+        const { tasks } = get();
+        set({
+            tasks: tasks.map((el) => ({
+                ...el,
+                done: el.id === id ? !el.done : el.done,
+            })
+            )
+        })
+    }
 }))
 
 

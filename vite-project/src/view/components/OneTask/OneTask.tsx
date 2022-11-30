@@ -25,7 +25,14 @@ const OneTask: React.FC<taskProp> = (prop) => {
     return (
         <div className={styles.container}>
             <div className={styles.oneCard}>
-                {isInput === false && (<p className={styles.notWind}>{prop.title}</p>)}
+                {isInput === false && (
+
+                    <div className={styles.div}>
+                        <input checked type="checkbox" className={styles.checkbox} />
+                        <p className={styles.notWind}>{prop.title}</p>
+                    </div>
+
+                )}
 
                 {isInput === true && (
                     <>
