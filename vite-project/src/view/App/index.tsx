@@ -7,7 +7,7 @@ import OneTask from '../components/OneTask/OneTask'
 
 export const App: React.FC = () => {
     const tasks = useStore(state => state.tasks);
-    console.log(tasks);
+    // console.log(tasks);
     return (
         <article className={styles.article}>
             <h1 className={styles.articleTitle}>To Do App</h1>
