@@ -6,15 +6,8 @@ import Form from '../components/Form/Form'
 import OneTask from '../components/OneTask/OneTask'
 
 export const App: React.FC = () => {
-    const [tasks, createTask, updateTask, removeTask] = useStore(state =>
-        [
-            state.tasks,
-            state.createTask,
-            state.updateTask,
-            state.removeTask,
-        ]);
-
-
+    const tasks = useStore(state => state.tasks);
+    console.log(tasks);
     return (
         <article className={styles.article}>
             <h1 className={styles.articleTitle}>To Do App</h1>

@@ -9,7 +9,7 @@ interface taskProp {
 }
 
 const OneTask: React.FC<taskProp> = (prop) => {
-    const [updateTask, removeTask] = useStore(state => [state.updateTask, state.removeTask]);
+    const [updateTask, removeTask, doneTask] = useStore(state => [state.updateTask, state.removeTask, state.doneTask]);
     const [isInput, setIsInput] = useState(false);
     const [newTitle, setNewTitle] = useState(prop.title);
     const [checked, setChecked] = useState(false);
@@ -25,6 +25,7 @@ const OneTask: React.FC<taskProp> = (prop) => {
 
     const doneThisTask = useCallback(() => {
         setChecked(!checked);
+        doneTask(prop.id);
     }, [checked]);
 
     return (
@@ -34,7 +35,7 @@ const OneTask: React.FC<taskProp> = (prop) => {
 
                     <div className={styles.div}>
                         <input
-                            onClick={() => doneThisTask()}
+                            onChange={() => doneThisTask()}
                             checked={checked}
                             type="checkbox"
                             className={styles.checkbox} />
