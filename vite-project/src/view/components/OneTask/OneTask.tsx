@@ -12,6 +12,7 @@ const OneTask: React.FC<taskProp> = (prop) => {
     const [updateTask, removeTask] = useStore(state => [state.updateTask, state.removeTask]);
     const [isInput, setIsInput] = useState(false);
     const [newTitle, setNewTitle] = useState(prop.title);
+    const [checked, setChecked] = useState(false);
 
     const updateValue = useCallback(() => {
         updateTask(prop.id, newTitle);
@@ -22,14 +23,24 @@ const OneTask: React.FC<taskProp> = (prop) => {
         removeTask(prop.id);
     }, [newTitle]);
 
+    const doneThisTask = useCallback(() => {
+        setChecked(!checked);
+    }, [checked]);
+
     return (
         <div className={styles.container}>
             <div className={styles.oneCard}>
                 {isInput === false && (
 
                     <div className={styles.div}>
-                        <input checked type="checkbox" className={styles.checkbox} />
-                        <p className={styles.notWind}>{prop.title}</p>
+                        <input
+                            onClick={() => doneThisTask()}
+                            checked={checked}
+                            type="checkbox"
+                            className={styles.checkbox} />
+                        <p className={checked === true ? (`${styles.notWind} ${styles.true}`) : (styles.notWind)}>
+                            {prop.title}
+                        </p>
                     </div>
 
                 )}

@@ -38,11 +38,18 @@
         display: inline-block;
         width: 1.5em;
         height: 1.5em;
-        background-image: url('../../../../public/ok.png');
+        // background-image: url('../../../../public/ok.png');
         background-position: center;
         background-color: white;
         border-radius: 3px;
         cursor: pointer;
+    }
+
+    &:checked {
+
+        &::before {
+            background-image: url('../../../../public/ok.png');
+        }
     }
 
     &:focus {
@@ -52,6 +59,10 @@
     &:hover {
         background-color: rgba(153, 6, 6, 0.359)
     }
+}
+
+.true {
+    text-decoration: line-through;
 }
 
 .notWind {
