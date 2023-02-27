@@ -1,4 +1,5 @@
 # TODO-typeScript
+<a href='https://remarkable-raindrop-3894d3.netlify.app/' target='_blank'>Ссылка на проект </a>
 
 <h2>Небольшое приложение TO-DO</h2>
 
